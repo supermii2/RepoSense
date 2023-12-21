@@ -38,6 +38,7 @@ public class CliArguments {
     private boolean isTestMode = ArgsParser.DEFAULT_IS_TEST_MODE;
     private boolean isFreshClonePerformed = ArgsParser.DEFAULT_SHOULD_FRESH_CLONE;
 
+    private final boolean isPrettyPrint;
 
     private List<String> locations;
     private boolean isViewModeOnly;
@@ -79,6 +80,7 @@ public class CliArguments {
         this.groupConfigFilePath = builder.groupConfigFilePath;
         this.reportConfigFilePath = builder.reportConfigFilePath;
         this.reportConfiguration = builder.reportConfiguration;
+        this.isPrettyPrint = builder.isPrettyPrint;
     }
 
     public ZoneId getZoneId() {
@@ -143,6 +145,10 @@ public class CliArguments {
 
     public boolean isFindingPreviousAuthorsPerformed() {
         return isFindingPreviousAuthorsPerformed;
+    }
+
+    public boolean isPrettyPrint() {
+        return isPrettyPrint;
     }
 
     public boolean isTestMode() {
@@ -226,7 +232,8 @@ public class CliArguments {
                 && Objects.equals(this.repoConfigFilePath, otherCliArguments.repoConfigFilePath)
                 && Objects.equals(this.authorConfigFilePath, otherCliArguments.authorConfigFilePath)
                 && Objects.equals(this.groupConfigFilePath, otherCliArguments.groupConfigFilePath)
-                && Objects.equals(this.reportConfigFilePath, otherCliArguments.reportConfigFilePath);
+                && Objects.equals(this.reportConfigFilePath, otherCliArguments.reportConfigFilePath)
+                && Objects.equals(this.isPrettyPrint, otherCliArguments.isPrettyPrint);
     }
 
     /**
@@ -260,6 +267,7 @@ public class CliArguments {
         private Path groupConfigFilePath;
         private Path reportConfigFilePath;
         private ReportConfiguration reportConfiguration;
+        private boolean isPrettyPrint;
 
         public Builder() {
         }
@@ -421,6 +429,16 @@ public class CliArguments {
          */
         public Builder isFindingPreviousAuthorsPerformed(boolean isFindingPreviousAuthorsPerformed) {
             this.isFindingPreviousAuthorsPerformed = isFindingPreviousAuthorsPerformed;
+            return this;
+        }
+
+        /**
+         * Adds the {@code isPrettyPrint} to CliArguments.
+         *
+         * @param isPrettyPrint Is pretty print performed.
+         */
+        public Builder isPrettyPrint(boolean isPrettyPrint) {
+            this.isPrettyPrint = isPrettyPrint;
             return this;
         }
 

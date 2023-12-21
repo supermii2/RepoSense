@@ -1,5 +1,6 @@
 package reposense;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.ZonedDateTime;
@@ -83,6 +84,7 @@ public class RepoSense {
 
             FileUtil.zipFoldersAndFiles(reportFoldersAndFiles, cliArguments.getOutputFilePath().toAbsolutePath(),
                     ".json");
+            FileUtil.setPrettyPrint(cliArguments.isPrettyPrint());
 
             // Set back to user's initial global git lfs config
             GitConfig.setGlobalGitLfsConfig(globalGitConfig);
