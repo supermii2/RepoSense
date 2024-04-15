@@ -50,7 +50,17 @@
         "js": "never",
         "ts": "never"
       }
-    ]
+    ],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      multiline: {
+        delimiter: 'comma',
+        requireLast: false,
+      },
+      singleline: {
+        delimiter: 'comma',
+        requireLast: false,
+      },
+    }]
   },
   "parserOptions": {
     "parser": "@typescript-eslint/parser"
